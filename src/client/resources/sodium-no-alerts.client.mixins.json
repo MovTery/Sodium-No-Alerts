@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"package": "com.movtery.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"PostLaunchChecksMixin",
+		"SodiumOptionsGUIMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

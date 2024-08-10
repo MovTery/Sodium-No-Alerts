@@ -1,6 +1,6 @@
-package com.movtery.mixin;
+package com.movtery.mixin.client;
 
-import com.movtery.SodiumNoAlerts;
+import com.movtery.SodiumNoAlertsClient;
 import me.jellysquid.mods.sodium.client.compatibility.checks.PostLaunchChecks;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -12,7 +12,7 @@ public class PostLaunchChecksMixin {
     @Inject(method = "isUsingPojavLauncher", at = @At("RETURN"), cancellable = true)
     private static void isUsingPojavLauncher(CallbackInfoReturnable<Boolean> cir) {
         Boolean originalValue = cir.getReturnValue();
-        boolean additionalCondition = SodiumNoAlerts.options().pojav.disablePojavLauncherWarnings && originalValue;
+        boolean additionalCondition = SodiumNoAlertsClient.options().pojav.disablePojavLauncherWarnings && originalValue;
 
         cir.setReturnValue(additionalCondition);
     }

@@ -1,12 +1,12 @@
 package com.movtery.gui.storage;
 
-import com.movtery.SodiumNoAlerts;
+import com.movtery.SodiumNoAlertsClient;
 import me.jellysquid.mods.sodium.client.gui.options.storage.OptionStorage;
 
 import java.io.IOException;
 
 public class SodiumNoAlertsOptionsStorage implements OptionStorage<SodiumNoAlertsOptions> {
-    private final SodiumNoAlertsOptions options = SodiumNoAlerts.options();
+    private final SodiumNoAlertsOptions options = SodiumNoAlertsClient.options();
 
     @Override
     public SodiumNoAlertsOptions getData() {

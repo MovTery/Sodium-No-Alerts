@@ -1,4 +1,4 @@
-package com.movtery.mixin;
+package com.movtery.mixin.client;
 
 import com.movtery.gui.DisableWarningPages;
 import me.jellysquid.mods.sodium.client.gui.SodiumOptionsGUI;
