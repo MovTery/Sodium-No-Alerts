@@ -13,17 +13,10 @@
 	"entrypoints": {
 		"main": [
 			"com.movtery.SodiumNoAlerts"
-		],
-		"client": [
-			"com.movtery.SodiumNoAlertsClient"
 		]
 	},
 	"mixins": [
-		"sodium-no-alerts.mixins.json",
-		{
-			"config": "sodium-no-alerts.client.mixins.json",
-			"environment": "client"
-		}
+		"sodium-no-alerts.mixins.json"
 	],
 	"depends": {
 		"minecraft": "~1.21"
