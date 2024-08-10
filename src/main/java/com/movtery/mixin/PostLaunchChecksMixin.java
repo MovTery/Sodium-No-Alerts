@@ -12,7 +12,7 @@ public class PostLaunchChecksMixin {
     @Inject(method = "isUsingPojavLauncher", at = @At("RETURN"), cancellable = true)
     private static void isUsingPojavLauncher(CallbackInfoReturnable<Boolean> cir) {
         Boolean originalValue = cir.getReturnValue();
-        boolean additionalCondition = SodiumNoAlerts.options().pojav.disablePojavLauncherWarnings && originalValue;
+        boolean additionalCondition = !SodiumNoAlerts.options().pojav.disablePojavLauncherWarnings && originalValue;
 
         cir.setReturnValue(additionalCondition);
     }
