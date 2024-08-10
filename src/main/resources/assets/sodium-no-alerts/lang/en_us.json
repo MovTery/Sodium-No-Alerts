@@ -1,0 +1,5 @@
+{
+  "sodium.options.pages.pojav_launcher": "PojavLauncher",
+  "sodium.options.pojav_launcher": "No longer warn PojavLauncher",
+  "sodium.options.pojav_launcher.tooltip": "If enabled, Sodium will no longer warn you that you are running Sodium with PojavLauncher\n(Need to restart the game)"
+}
