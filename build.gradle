@@ -3,7 +3,7 @@ plugins {
 	id 'maven-publish'
 }
 
-version = project.mod_version
+version = getVersionName()
 group = project.maven_group
 
 base {
@@ -87,4 +87,11 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
+}
+
+def getVersionName() {
+	def builder = new StringBuilder()
+	builder.append(project.mod_version).append("+mc").append(project.minecraft_version)
+
+	return builder.toString()
 }
