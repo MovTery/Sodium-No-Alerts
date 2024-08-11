@@ -19,6 +19,6 @@ public class SodiumOptionsGUIMixin {
 
     @Inject(method = "<init>", at = @At("TAIL"))
     private void init(Screen prevScreen, CallbackInfo ci) {
-        this.pages.add(DisableWarningPages.pojavLauncher());
+        this.pages.add(DisableWarningPages.sodiumNoAlerts());
     }
 }

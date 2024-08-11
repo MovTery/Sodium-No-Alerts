@@ -13,12 +13,11 @@ import java.nio.file.Path;
 
 public class SodiumNoAlertsOptions {
     private static final String DEFAULT_FILE_NAME = "sodium-no-alerts-options.json";
-    public final PojavLauncherSettings pojav = new PojavLauncherSettings();
-    private boolean readOnly;
+    public final SodiumNoAlertsSettings sodiumNoAlertsSettings = new SodiumNoAlertsSettings();
     private static final Gson GSON;
 
     static {
-        GSON = (new GsonBuilder()).setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).setPrettyPrinting().excludeFieldsWithModifiers(new int[]{2}).create();
+        GSON = (new GsonBuilder()).setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).setPrettyPrinting().excludeFieldsWithModifiers(2).create();
     }
 
     public static SodiumNoAlertsOptions load() {
@@ -64,30 +63,18 @@ public class SodiumNoAlertsOptions {
     }
 
     public static void writeToDisk(SodiumNoAlertsOptions config) throws IOException {
-        if (config.isReadOnly()) {
-            throw new IllegalStateException("Config file is read-only");
-        } else {
-            Path path = getConfigPath();
-            Path dir = path.getParent();
-            if (!Files.exists(dir)) {
-                Files.createDirectories(dir);
-            } else if (!Files.isDirectory(dir)) {
-                throw new IOException("Not a directory: " + dir);
-            }
-
-            FileUtil.writeTextRobustly(GSON.toJson(config), path);
+        Path path = getConfigPath();
+        Path dir = path.getParent();
+        if (!Files.exists(dir)) {
+            Files.createDirectories(dir);
+        } else if (!Files.isDirectory(dir)) {
+            throw new IOException("Not a directory: " + dir);
         }
+
+        FileUtil.writeTextRobustly(GSON.toJson(config), path);
     }
 
-    public boolean isReadOnly() {
-        return this.readOnly;
-    }
-
-    public void setReadOnly() {
-        this.readOnly = true;
-    }
-
-    public static class PojavLauncherSettings {
+    public static class SodiumNoAlertsSettings {
         public boolean disablePojavLauncherWarnings = false;
     }
 }
