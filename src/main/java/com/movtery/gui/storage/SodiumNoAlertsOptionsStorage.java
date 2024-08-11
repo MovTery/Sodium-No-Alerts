@@ -16,7 +16,7 @@ public class SodiumNoAlertsOptionsStorage implements OptionStorage<SodiumNoAlert
     @Override
     public void save() {
         try {
-            SodiumNoAlertsOptions.writeToDisk(options);
+            options.writeChanges();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

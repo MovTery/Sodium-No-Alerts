@@ -3,13 +3,13 @@ package com.movtery.gui.storage;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import me.jellysquid.mods.sodium.client.util.FileUtil;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 public class SodiumNoAlertsOptions {
     private static final String DEFAULT_FILE_NAME = "sodium-no-alerts-options.json";
@@ -50,7 +50,7 @@ public class SodiumNoAlertsOptions {
         }
 
         try {
-            writeToDisk(config);
+            config.writeChanges();
             return config;
         } catch (IOException var6) {
             e = var6;
@@ -62,16 +62,17 @@ public class SodiumNoAlertsOptions {
         return FabricLoader.getInstance().getConfigDir().resolve(DEFAULT_FILE_NAME);
     }
 
-    public static void writeToDisk(SodiumNoAlertsOptions config) throws IOException {
-        Path path = getConfigPath();
-        Path dir = path.getParent();
+    public void writeChanges() throws IOException {
+        Path dir = getConfigPath().getParent();
         if (!Files.exists(dir)) {
             Files.createDirectories(dir);
         } else if (!Files.isDirectory(dir)) {
             throw new IOException("Not a directory: " + dir);
         }
 
-        FileUtil.writeTextRobustly(GSON.toJson(config), path);
+        Path tempPath = getConfigPath().resolveSibling(getConfigPath().getFileName() + ".tmp");
+        Files.writeString(tempPath, GSON.toJson(this));
+        Files.move(tempPath, getConfigPath(), StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
     }
 
     public static class SodiumNoAlertsSettings {
