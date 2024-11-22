@@ -1,6 +1,6 @@
 package com.movtery.mixin;
 
-import me.jellysquid.mods.sodium.client.compatibility.checks.PostLaunchChecks;
+import net.caffeinemc.mods.sodium.client.compatibility.checks.PostLaunchChecks;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

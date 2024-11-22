@@ -19,7 +19,7 @@
 		"sodium-no-alerts.mixins.json"
 	],
 	"depends": {
-		"minecraft": "1.21.x",
-		"sodium": "*"
+		"minecraft": "1.21.1",
+		"sodium": ">=0.6.0"
 	}
 }
