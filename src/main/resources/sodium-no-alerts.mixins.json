@@ -4,8 +4,7 @@
   "package": "com.movtery.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "PostLaunchChecksMixin",
-    "SodiumOptionsGUIMixin"
+    "PostLaunchChecksMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,5 +1,0 @@
-{
-  "sodium.options.pages.sodium_no_alerts": "Alerts",
-  "sodium.options.check_pojav_launcher": "Disable PojavLauncher Checks",
-  "sodium.options.check_pojav_launcher.tooltip": "Disable Sodium's checks for PojavLauncher to prevent Sodium from displaying warning pop-ups (changes take effect after restarting)"
-}
